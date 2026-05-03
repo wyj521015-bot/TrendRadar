@@ -44,7 +44,7 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: read
+  contents: write
   actions: write
 
 jobs:
@@ -168,3 +168,16 @@ jobs:
           S3_REGION: ${{ secrets.S3_REGION }}
           GITHUB_ACTIONS: true
         run: uv run python -m trendradar
+
+      - name: Commit output to repo
+        if: success()
+        run: |
+          git config user.name "TrendRadar Bot"
+          git config user.email "bot@trendradar.local"
+          git add output/ || true
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "auto: update hot news $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git push
+          fi
