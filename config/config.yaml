@@ -1,76 +1,77 @@
-# ═══════════════════════════════════════════════════════════════
-# TrendRadar 配置文件 - 冥鲲定制版
-# 聚焦：AI自动化、Agent、SaaS、副业机会
-# ═══════════════════════════════════════════════════════════════
-
-app:
-  timezone: "Asia/Shanghai"
-  show_version_update: true
-
-schedule:
-  enabled: true
-  preset: "morning_evening"  # 全天推送 + 晚间当日汇总
-
-# ═══════════════════════════════════════════════════════════════
-# 数据源 - 只保留科技/AI相关的平台
-# ═══════════════════════════════════════════════════════════════
-platforms:
-  enabled: true
-  sources:
-    - id: "zhihu"
-      name: "知乎"
-    - id: "bilibili-hot-search"
-      name: "bilibili 热搜"
-    - id: "weibo"
-      name: "微博"
-    - id: "toutiao"
-      name: "今日头条"
-    - id: "wallstreetcn-hot"
-      name: "华尔街见闻"
-    - id: "cls-hot"
-      name: "财联社热门"
-
-# ═══════════════════════════════════════════════════════════════
-# RSS订阅 - 科技/AI相关
-# ═══════════════════════════════════════════════════════════════
-rss:
-  enabled: true
-  freshness_filter:
-    enabled: true
-    max_age_days: 1
-  feeds:
-    - id: "hacker-news"
-      name: "Hacker News"
-      url: "https://hnrss.org/frontpage"
-    - id: "producthunt"
-      name: "Product Hunt"
-      url: "https://www.producthunt.com/feed"
-    - id: "techcrunch"
-      name: "TechCrunch"
-      url: "https://techcrunch.com/feed/"
-
-# ═══════════════════════════════════════════════════════════════
-# 报告模式
-# ═══════════════════════════════════════════════════════════════
-report:
-  mode: "incremental"  # 只看新增，最少打扰
-  display_mode: "keyword"
-  sort_by_position_first: false
-  rank_threshold: 5
-  max_news_per_keyword: 0
-
-# ═══════════════════════════════════════════════════════════════
-# 筛选 - 用关键词模式（零成本，不需要AI API）
-# ═══════════════════════════════════════════════════════════════
-filter:
-  method: "keyword"
-
-# ═══════════════════════════════════════════════════════════════
-# 推送渠道 - 飞书
-# ⚠️ 需要填入你的飞书机器人Webhook地址
-# ═══════════════════════════════════════════════════════════════
-push:
-  feishu:
-    enabled: true
-    webhook_url: "YOUR_FEISHU_WEBHOOK_URL"  # ← 替换为你的飞书webhook
-    # 格式: https://open.feishu.cn/open-apis/bot/v2/hook/xxxxx
+     1|# ═══════════════════════════════════════════════════════════════
+     2|# TrendRadar 配置文件 - 冥鲲定制版
+     3|# 聚焦：AI自动化、Agent、SaaS、副业机会
+     4|# ═══════════════════════════════════════════════════════════════
+     5|
+     6|app:
+     7|  timezone: "Asia/Shanghai"
+     8|  show_version_update: true
+     9|
+    10|schedule:
+    11|  enabled: true
+    12|  preset: "morning_evening"  # 全天推送 + 晚间当日汇总
+    13|
+    14|# ═══════════════════════════════════════════════════════════════
+    15|# 数据源 - 只保留科技/AI相关的平台
+    16|# ═══════════════════════════════════════════════════════════════
+    17|platforms:
+    18|  enabled: true
+    19|  sources:
+    20|    - id: "zhihu"
+    21|      name: "知乎"
+    22|    - id: "bilibili-hot-search"
+    23|      name: "bilibili 热搜"
+    24|    - id: "weibo"
+    25|      name: "微博"
+    26|    - id: "toutiao"
+    27|      name: "今日头条"
+    28|    - id: "wallstreetcn-hot"
+    29|      name: "华尔街见闻"
+    30|    - id: "cls-hot"
+    31|      name: "财联社热门"
+    32|
+    33|# ═══════════════════════════════════════════════════════════════
+    34|# RSS订阅 - 科技/AI相关
+    35|# ═══════════════════════════════════════════════════════════════
+    36|rss:
+    37|  enabled: true
+    38|  freshness_filter:
+    39|    enabled: true
+    40|    max_age_days: 1
+    41|  feeds:
+    42|    - id: "hacker-news"
+    43|      name: "Hacker News"
+    44|      url: "https://hnrss.org/frontpage"
+    45|    - id: "producthunt"
+    46|      name: "Product Hunt"
+    47|      url: "https://www.producthunt.com/feed"
+    48|    - id: "techcrunch"
+    49|      name: "TechCrunch"
+    50|      url: "https://techcrunch.com/feed/"
+    51|
+    52|# ═══════════════════════════════════════════════════════════════
+    53|# 报告模式
+    54|# ═══════════════════════════════════════════════════════════════
+    55|report:
+    56|  mode: "incremental"  # 只看新增，最少打扰
+    57|  display_mode: "keyword"
+    58|  sort_by_position_first: false
+    59|  rank_threshold: 5
+    60|  max_news_per_keyword: 0
+    61|
+    62|# ═══════════════════════════════════════════════════════════════
+    63|# 筛选 - 用关键词模式（零成本，不需要AI API）
+    64|# ═══════════════════════════════════════════════════════════════
+    65|filter:
+    66|  method: "keyword"
+    67|
+    68|# ═══════════════════════════════════════════════════════════════
+    69|# 推送渠道 - 飞书
+    70|# ⚠️ 需要填入你的飞书机器人Webhook地址
+    71|# ═══════════════════════════════════════════════════════════════
+    72|push:
+    73|  feishu:
+    74|    enabled: true
+    75|    webhook_url: "YOUR_FEISHU_WEBHOOK_URL"  # ← 替换为你的飞书webhook
+    76|    # 格式: https://open.feishu.cn/open-apis/bot/v2/hook/xxxxx
+    77|
